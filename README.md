@@ -1,5 +1,5 @@
 <!-- Banner Section -->
-<h1 align="center">🚀 LeetCode Journey by [Your Name]</h1>
+<h1 align="center">🚀 LeetCode Journey by [Pratyush Kumar Pandey]</h1>
 <p align="center">
   <img src="https://img.shields.io/badge/Problem%20Solving-🔥%20Active-brightgreen" />
   <img src="https://img.shields.io/badge/Language-Python%2FJava%2FC++-blue" />
@@ -40,4 +40,29 @@ Welcome to my **LeetCode Solutions Repository**, where I document my journey of 
 ---
 
 ## 📁 Repository Structure
+Leetcode-Solutions/
+├── Arrays/
+├── Strings/
+├── LinkedList/
+├── Trees/
+├── Graphs/
+├── DynamicProgramming/
+├── Backtracking/
+├── Math/
+└── README.md
+
+
+Each folder contains:
+- ✅ Problem statement (commented)
+- ✅ Time and space complexity
+- ✅ Optimized code solution
+- ✅ Clean and readable format
+
+---
+
+## 💡 How to Use
+
+1. **Clone this repo**:
+   ```bash
+   git clone https://github.com/its-pratyushpandey/Leetcode-Solutions.git
 
