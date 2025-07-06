@@ -36,6 +36,7 @@
 <p><strong>Constraints:</strong></p>
 
 <ul>
+	//
 	<li><code>1 &lt;= s.length&nbsp;&lt;= 20</code></li>
 	<li><code>1 &lt;= p.length&nbsp;&lt;= 20</code></li>
 	<li><code>s</code> contains only lowercase English letters.</li>
