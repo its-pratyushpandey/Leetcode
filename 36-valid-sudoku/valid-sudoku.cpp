@@ -1,20 +1,17 @@
 #include <vector>
-#include <unordered_set>
 using namespace std;
 
 class Solution {
 public:
     bool isValidSudoku(vector<vector<char>>& b) {
-        vector<unordered_set<char>> r(9), c(9), x(9);
+        bool row[9][9] = {false}, col[9][9] = {false}, box[9][9] = {false};
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                char v = b[i][j];
-                if (v == '.') continue;
-                if (r[i].count(v) || c[j].count(v) || x[(i/3)*3 + j/3].count(v))
-                    return false;
-                r[i].insert(v);
-                c[j].insert(v);
-                x[(i/3)*3 + j/3].insert(v);
+                if (b[i][j] == '.') continue;
+                int num = b[i][j] - '1';
+                int k = (i / 3) * 3 + j / 3;
+                if (row[i][num] || col[j][num] || box[k][num]) return false;
+                row[i][num] = col[j][num] = box[k][num] = true;
             }
         }
         return true;
