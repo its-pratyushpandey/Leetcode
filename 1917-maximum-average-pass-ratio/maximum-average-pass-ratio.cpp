@@ -1,21 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+struct Node {
+    int p, t;
+    double gain;
+    Node(int _p,int _t):p(_p),t(_t){
+        gain=(double)(p+1)/(t+1)-(double)p/t;
+    }
+    bool operator<(const Node& other) const {
+        return gain < other.gain;
+    }
+};
+
 class Solution {
 public:
-    double g(int x,int y){return (double)(x+1)/(y+1)-(double)x/y;}
-    double maxAverageRatio(vector<vector<int>>& a,int m){
-        priority_queue<tuple<double,int,int>> h;
-        for(auto &u:a) h.push({g(u[0],u[1]),u[0],u[1]});
-        while(m--){
-            auto [d,x,y]=h.top(); h.pop();
-            h.push({g(x+1,y+1),x+1,y+1});
+    double maxAverageRatio(vector<vector<int>>& cls, int k) {
+        ios::sync_with_stdio(false);
+        cin.tie(nullptr);
+
+        priority_queue<Node> pq;
+        for (auto &c: cls) pq.emplace(c[0], c[1]);
+
+        while (k--) {
+            auto cur = pq.top(); pq.pop();
+            pq.emplace(cur.p+1, cur.t+1);
         }
-        double res=0;
-        while(!h.empty()){
-            auto [d,x,y]=h.top(); h.pop();
-            res+=(double)x/y;
+
+        double sum=0;
+        while (!pq.empty()) {
+            auto cur = pq.top(); pq.pop();
+            sum += (double)cur.p / cur.t;
         }
-        return res/a.size();
+        return sum / cls.size();
     }
 };
