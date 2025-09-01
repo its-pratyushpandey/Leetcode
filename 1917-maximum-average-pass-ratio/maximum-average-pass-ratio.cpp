@@ -3,21 +3,19 @@ using namespace std;
 
 class Solution {
 public:
-    double f(int a, int b) {
-        return (double)(a+1)/(b+1) - (double)a/b;
-    }
-    double maxAverageRatio(vector<vector<int>>& v, int k) {
-        priority_queue<tuple<double,int,int>> q;
-        for (auto &x : v) q.push({f(x[0],x[1]),x[0],x[1]});
-        while (k--) {
-            auto [g,a,b] = q.top(); q.pop();
-            q.push({f(a+1,b+1),a+1,b+1});
+    double g(int x,int y){return (double)(x+1)/(y+1)-(double)x/y;}
+    double maxAverageRatio(vector<vector<int>>& a,int m){
+        priority_queue<tuple<double,int,int>> h;
+        for(auto &u:a) h.push({g(u[0],u[1]),u[0],u[1]});
+        while(m--){
+            auto [d,x,y]=h.top(); h.pop();
+            h.push({g(x+1,y+1),x+1,y+1});
         }
-        double s=0;
-        while (!q.empty()) {
-            auto [g,a,b] = q.top(); q.pop();
-            s += (double)a/b;
+        double res=0;
+        while(!h.empty()){
+            auto [d,x,y]=h.top(); h.pop();
+            res+=(double)x/y;
         }
-        return s/v.size();
+        return res/a.size();
     }
 };
